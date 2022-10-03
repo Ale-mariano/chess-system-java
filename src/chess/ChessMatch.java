@@ -40,6 +40,6 @@ public class ChessMatch {
        placeNewPiece('d', 7, new Rook(board, Color.Black));
        placeNewPiece('e', 7, new Rook(board, Color.Black));
        placeNewPiece('e', 8, new Rook(board, Color.Black));
-       placeNewPiece('d', 8, new King(board, Color.Black));
+       placeNewPiece('d', 4, new King(board, Color.Black));
 	}
 }
