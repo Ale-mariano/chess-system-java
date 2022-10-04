@@ -63,7 +63,7 @@ public class Board {
           return aux;
 		}
 
-	private boolean positionExists(Position position) {
+	public boolean positionExists(Position position) {
 		return positionExists(position.getRow(), position.getColumns());
 
 	}

@@ -30,8 +30,9 @@ public class ChessMatch {
 	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
-		validateSourcePosition(source); //validates the source position if it exists or not.
-		Piece capturedPiece = makeMove(source, target); //responsible for performing the movement of the piece.
+		validateSourcePosition(source); // validates the source position if it exists or not.
+		validateTargetPosition(source, target);
+		Piece capturedPiece = makeMove(source, target); // responsible for performing the movement of the piece.
 		return (ChessPiece) capturedPiece;
 
 	}
@@ -47,12 +48,18 @@ public class ChessMatch {
 		if (!board.thereIsAPiece(position)) {
 			throw new ChessException("There is no piece on source position");
 		}
-		//checks if there are possible movements for the part.
-		if(board.piece(position).isThereanyPossibleMove()) {
+
+		// checks if there are possible movements for the part.
+		if (board.piece(position).isThereanyPossibleMove()) {
 			throw new ChessException("There is no possible moves for the choses piece");
-						
 		}
 
+	}
+
+	private void validateTargetPosition(Position source, Position target) {
+		if (!board.piece(source).possibleMove(target)) {
+			throw new ChessException("The chosen piece can't move to target position");
+		}
 	}
 
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
