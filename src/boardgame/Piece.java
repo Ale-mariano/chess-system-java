@@ -21,7 +21,8 @@ public abstract class Piece {
 		return possibleMoves()[position.getRow()][position.getColumns()];
 		
 	}
-	public boolean isThereanyPossibleMove() {
+	// ckeck if the part is locked
+		public boolean isThereAnyPossibleMove() {
 		boolean[][] mat = possibleMoves();
 		for(int i = 0; i<mat.length; i++) {
 			for (int j = 0; j<mat.length; j++) {
